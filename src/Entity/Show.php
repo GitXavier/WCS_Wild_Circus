@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,27 @@ class Show
      * @ORM\Column(type="text", nullable=true)
      */
     private $content;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="spectacle")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\media", inversedBy="shows")
+     */
+    private $media;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\program", inversedBy="shows")
+     */
+    private $program;
+
+    public function __construct()
+    {
+        $this->user = new ArrayCollection();
+        $this->program = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +74,72 @@ class Show
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->addSpectacle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
+            $user->removeSpectacle($this);
+        }
+
+        return $this;
+    }
+
+    public function getMedia(): ?media
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?media $media): self
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|program[]
+     */
+    public function getProgram(): Collection
+    {
+        return $this->program;
+    }
+
+    public function addProgram(program $program): self
+    {
+        if (!$this->program->contains($program)) {
+            $this->program[] = $program;
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(program $program): self
+    {
+        if ($this->program->contains($program)) {
+            $this->program->removeElement($program);
+        }
 
         return $this;
     }

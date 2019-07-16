@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class Program
      * @ORM\Column(type="string", length=255)
      */
     private $schedule;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Show", mappedBy="program")
+     */
+    private $shows;
+
+    public function __construct()
+    {
+        $this->shows = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +97,34 @@ class Program
     public function setSchedule(string $schedule): self
     {
         $this->schedule = $schedule;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Show[]
+     */
+    public function getShows(): Collection
+    {
+        return $this->shows;
+    }
+
+    public function addShow(Show $show): self
+    {
+        if (!$this->shows->contains($show)) {
+            $this->shows[] = $show;
+            $show->addProgram($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShow(Show $show): self
+    {
+        if ($this->shows->contains($show)) {
+            $this->shows->removeElement($show);
+            $show->removeProgram($this);
+        }
 
         return $this;
     }
