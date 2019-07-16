@@ -64,17 +64,18 @@ class User
     private $status;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mail;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $password;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\show", inversedBy="user")
+     * @ORM\Column(nullable=true)
      */
     private $spectacle;
 
