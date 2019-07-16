@@ -74,8 +74,8 @@ class User
     private $password;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\show", inversedBy="user")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Show", inversedBy="user")
+     *
      */
     private $spectacle;
 

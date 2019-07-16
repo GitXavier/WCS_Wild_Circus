@@ -7,9 +7,10 @@
 /var/
 /vendor/
 ###> jetbrain/phpstorm ###
-/.idea/
-###< symfony/framework-bundle ###
+/.idea
+/.idea/workspace.xml/
 
+###< symfony/framework-bundle ###
 ###> symfony/phpunit-bridge ###
 .phpunit
 /phpunit.xml

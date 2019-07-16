@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ShowRepository")
+ * @ORM\Table("`show`")
  */
 class Show
 {
@@ -34,12 +35,12 @@ class Show
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\media", inversedBy="shows")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", inversedBy="shows")
      */
     private $media;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\program", inversedBy="shows")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Program", inversedBy="shows")
      */
     private $program;
 
