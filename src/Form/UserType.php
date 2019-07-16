@@ -23,7 +23,6 @@ class UserType extends AbstractType
             ->add('city')
             ->add('birthdate')
             ->add('phone')
-            ->add('role')
 
             ->add('status', ChoiceType::class, [
                 'label' => 'Status',
@@ -32,8 +31,7 @@ class UserType extends AbstractType
                     'Artiste' => 'Artiste',
                 ]])
 
-            ->add('mail')
-            ->add('password')
+            ->add('email')
             ->add('spectacle', EntityType::class, [
                 'class' => Show::class,
                 'multiple' => true,
