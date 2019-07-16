@@ -19,6 +19,17 @@ class ProgramRepository extends ServiceEntityRepository
         parent::__construct($registry, Program::class);
     }
 
+    public function searchProgram($searchs)
+    {
+        $qb = $this->createQueryBuilder('program');
+
+        if($searchs['program']){
+            $qb->orHaving('program.city LIKE :val')
+                ->setParameter('val', '%'.$searchs['program'].'%');
+        }
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Program[] Returns an array of Program objects
     //  */

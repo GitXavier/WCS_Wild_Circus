@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        {{ form_start(searchProgramForm) }}
+
+                   {{ form_row(searchProgramForm.program) }}
+
+        {{ form_end(searchProgramForm) }}
+
+
+
+
+
+
+
+{% for program in programs %}
+    {{ dump(program) }}
+
+    {% for show in program.shows %}
+        {{ dump(show) }}
+    {% endfor %}
+
+
+
+{% endfor %}
+
+
+{% endblock %}
