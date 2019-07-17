@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Show;
 use App\Form\ShowType;
 use App\Repository\ShowRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class ShowController extends AbstractController
 {
     /**
      * @Route("/", name="show_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(ShowRepository $showRepository): Response
     {

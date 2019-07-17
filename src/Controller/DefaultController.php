@@ -54,8 +54,11 @@ class DefaultController extends AbstractController
      */
     public function ticket(ArticleRepository $articleRepository)
     {
+
         return $this->render('ticket.html.twig', [
+
                 'articles' => $articleRepository->findAll(),
+
             ]);
     }
 
