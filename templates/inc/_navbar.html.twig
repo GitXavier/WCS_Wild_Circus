@@ -15,9 +15,7 @@
             {% if app.user %}
                 <li class="nav-item active">
                     <span class="nav-link">
-                        {% trans with {'%username%': app.user.email} %}
-                            hello
-                        {% endtrans %}
+                      Bonjour {{ app.user.firstname }}
                      </span>
                 </li>
                 <li class="nav-item active">
