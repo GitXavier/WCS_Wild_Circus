@@ -51,9 +51,24 @@ class DefaultController extends AbstractController
     /**
      * @Route("/billetterie", name="ticket")
      * @return Response
+     * @param Request $request
      */
-    public function ticket(ArticleRepository $articleRepository)
+    public function ticket(ArticleRepository $articleRepository, Request $request)
     {
+
+        //dd($_GET);
+
+        if (isset($_GET['nbr'])){
+
+            $_GET['nbr'] += 1;
+            $counter = $_GET['nbr'];
+
+            return $this->render('ticket.html.twig', [
+
+                'articles' => $articleRepository->findAll(),
+                'counter' => $counter
+            ]);
+        }
 
         return $this->render('ticket.html.twig', [
 

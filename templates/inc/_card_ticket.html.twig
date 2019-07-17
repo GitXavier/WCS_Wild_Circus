@@ -9,11 +9,11 @@
                     <p class="card-title text-center">{{ article.content }}</p>
                     <a href="{{ path('ticket', {'name': article.name,
                         'price': article.price,
-                        'id': article.id,
+                        'id': article.id
                     }) }}"
                        class="btn btn-primary">+ Ticket</a>
 
-                    {% if get is defined %}
+                    {% if counter is defined %}
                 {{ dump(counter) }}
                     {% endif %}
                 </div>
