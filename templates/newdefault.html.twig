@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Wild Circus</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('assets/css/agency.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase  m-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#accueil">Accueil</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav text-uppercase  m-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Performances</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path('ticket') }}">Billetterie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path('search') }}">Représentation</a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('show_index') }}">Spectacles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('program_index') }}">Programmes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
+                    </li>
+                {%endif%}
+            </ul>
+            <div class="row">
+                <div>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="nav-item">
+                            <a class="nav-link" href="{{ path('count') }}">Mon Compte</a>
+                        </div>
+                    {%endif%}
+                </div>
+                {% if app.user %}
+                    <div class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_logout') }}"> Déconnexion</a>
+                    </div>
+                {% else %}
+                    <div class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_login') }}"> Connexion</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="masthead" id="accueil">
+    <div class="container">
+        <div class="intro-text"></div>
+    </div>
+</header>
+
+<!-- Performance -->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase pb-5">Performances</h2>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+
+                <h4 class="service-heading">Rire</h4>
+                <p class="text-muted">
+                    En tant qu'adulte, venez découvrir nos irrésistibles clowns, entre blagues et farces,
+                    laissez-vous emporter par leur joie et retomber dans l'enfance.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="service-heading">Rêver</h4>
+                <p class="text-muted">
+                    Laissez-vous emporter dans un monde où réel et imaginaire ne font qu'un,
+                    en compagnie de nos magiciens talentueux, découvrez un monde merveilleux
+                    uniquement limité par votre imagination.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="service-heading">S'émerveiller</h4>
+                <p class="text-muted">
+                    Apprivoisez l'indomptable en compagnie de nos dompteurs, entre rugissement et griffes acérées,
+                    regardez ces félins féroces se transformer en chatons adorables.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="bg-light page-section" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase pb-5">Portfolio</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/01-thumbnail.jpg') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Threads</h4>
+                    <p class="text-muted">Illustration</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/02-thumbnail.jpg') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Explore</h4>
+                    <p class="text-muted">Graphic Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/03-thumbnail.jpg') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Finish</h4>
+                    <p class="text-muted">Identity</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/04-thumbnail.jpg') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Lines</h4>
+                    <p class="text-muted">Branding</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/05-thumbnail.jpg') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Southwest</h4>
+                    <p class="text-muted">Website Design</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/06-thumbnail.jpg') }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Window</h4>
+                    <p class="text-muted">Photography</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase pb-5">Nos débuts</h2>
+                <div class="container mb-5">
+                    <div class="row justify-content-around ">
+                        <div class="col-5 text-right">
+                            <p>
+                                À l’aube des années 1980, une troupe d’artistes fondée par Xavier CROCHET s’installe dans
+                                les rues de Cadillac, charmant village situé au bord de la Garonne, près de Bordeaux.
+                                Connu du public sous le nom de Clowns rigolos de Cadillac, ce groupe constituerait le noyau
+                                de ce qui deviendrait Wild Sircus. Cette équipe a présenté un spectacle éclectique mettant
+                                en vedette des clowns, des magiciens et des dompteurs qui ont ravi les fans locaux avec
+                                leur numéro. Ce groupe ne savait pas que ces débuts mèneraient à quelque chose de plus
+                                grand à l'échelle mondiale.
+                            </p>
+                        </div>
+                        <div class="col-5">
+                            <img class="d-block w-100" src="{{ asset('assets/img/clowns.jpg') }}" alt="First slide">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <a href="https://wildcodeschool.fr/bordeaux/" target="_blank">
+                <span class="copyright">Copyright &copy; Checkpoint_4 WCS</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<!-- Portfolio Modals -->
+
+<!-- Modal 1 -->
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/portfolio/01-full.jpg') }}" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Threads</li>
+                                <li>Category: Illustration</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/portfolio/02-full.jpg') }}" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Explore</li>
+                                <li>Category: Graphic Design</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/portfolio/03-full.jpg') }}" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Finish</li>
+                                <li>Category: Identity</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 4 -->
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/portfolio/04-full.jpg') }}" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Lines</li>
+                                <li>Category: Branding</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 5 -->
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src={{ asset('assets/img/portfolio/05-full.jpg') }}"" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Southwest</li>
+                                <li>Category: Website Design</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 6 -->
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('assets/img/portfolio/06-full.jpg') }}" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Window</li>
+                                <li>Category: Photography</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Contact form JavaScript -->
+<script src="{{ asset('assets/js/jqBootstrapValidation.js') }}"></script>
+<script src="{{ asset('assets/js/contact_me.js') }}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{{ asset('assets/js/agency.min.js') }}"></script>
+
+</body>
+
+</html>
