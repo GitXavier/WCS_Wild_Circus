@@ -9,6 +9,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,13 @@ class ShowType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-
+            ->add('image', ChoiceType::class, [
+                'label' => 'Image',
+                'choices'  => [
+                    'Clown' => 'clone.jpg',
+                    'Illusionniste' => 'illusionniste.jpg',
+                    'Magicien' => 'magicien.jpg'
+                ]])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'multiple' => true,

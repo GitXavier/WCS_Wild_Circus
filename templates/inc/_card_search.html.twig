@@ -1,0 +1,21 @@
+{% for program in programs %}
+    <div class="container">
+        <div class="border  mt-5 p-5 text-center">
+
+            <h3 class="pb-3">{{ program.name }} le {{ program.date|date('d m Y')}} à {{ program.schedule }} </h3>
+
+            <div class="row justify-content-around">
+                {% for show in program.shows %}
+                <div class="card m-2 p-3" style="width: 18rem;">
+                    <img src="{{ asset('assets/img/' ~ show.image) }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ show.name }}</h5>
+                        <p class="card-text">{{ show.content }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+

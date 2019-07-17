@@ -14,8 +14,7 @@ class MediaType extends AbstractType
         $builder
             ->add('name')
             ->add('url')
-            ->add('category')
-            ->add('article')
+
         ;
     }
 

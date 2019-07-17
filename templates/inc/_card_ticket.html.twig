@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row justify-content-center">
+                {% for article in articles %}
+                    <div class="card col-4 m-2 p-3" style="width: 18rem;">
+                        <img src="{{ asset('assets/img/' ~ article.image) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ article.name }}</h5>
+                            <h5 class="card-title text-center">{{ article.price }}€</h5>
+                            <p class="card-title text-center">{{ article.content }}</p>
+                            <a href="#" class="btn btn-primary">+ Ticket</a>
+                        </div>
+                    </div>
+                {% endfor %}
+</div></div>
+

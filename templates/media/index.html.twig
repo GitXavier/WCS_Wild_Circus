@@ -3,25 +3,28 @@
 {% block title %}Media index{% endblock %}
 
 {% block body %}
-    <h1>Media index</h1>
 
+    <div class="jumbotron">
+        <div class="text-center">
+        <h1>Media index</h1>
+        </div>
+        <a href="{{ path('media_new') }}">Ajouter un Média</a>
+    </div>
+
+    <div class="container">
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="text-center">
                 <th>Name</th>
                 <th>Url</th>
-                <th>Category</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for medium in media %}
             <tr>
-                <td>{{ medium.id }}</td>
                 <td>{{ medium.name }}</td>
                 <td>{{ medium.url }}</td>
-                <td>{{ medium.category }}</td>
                 <td>
                     <a href="{{ path('media_show', {'id': medium.id}) }}">show</a>
                     <a href="{{ path('media_edit', {'id': medium.id}) }}">edit</a>
@@ -34,6 +37,6 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
 
-    <a href="{{ path('media_new') }}">Create new</a>
 {% endblock %}

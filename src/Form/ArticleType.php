@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +16,14 @@ class ArticleType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('content')
-            ->add('media')
-        ;
+            ->add('image', ChoiceType::class, [
+                'label' => 'Image',
+                'choices'  => [
+                    'Ticket Enfant' => 'ticket-enfant.jpg',
+                    'Ticket Groupe' => 'ticket10.png',
+                    'Ticket' => 'ticket.png',
+                    'Ticket VIP' => 'ticket-vip.jpg'
+            ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

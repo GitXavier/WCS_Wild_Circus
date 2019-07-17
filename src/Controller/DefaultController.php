@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Program;
 use App\Form\SearchType;
+use App\Repository\ArticleRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,11 +52,19 @@ class DefaultController extends AbstractController
      * @Route("/billetterie", name="ticket")
      * @return Response
      */
-    public function ticket()
+    public function ticket(ArticleRepository $articleRepository)
     {
+        return $this->render('ticket.html.twig', [
+                'articles' => $articleRepository->findAll(),
+            ]);
+    }
 
-
-
-        return $this->render('ticket.html.twig');
+    /**
+     * @Route("/compte", name="count")
+     * @return Response
+     */
+    public function count()
+    {
+        return $this->render('count.html.twig');
     }
 }

@@ -25,6 +25,11 @@ class Show
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $content;
@@ -56,13 +61,25 @@ class Show
     }
 
     public function getName(): ?string
-    {
-        return $this->name;
-    }
+{
+    return $this->name;
+}
 
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

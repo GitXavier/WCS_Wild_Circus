@@ -1,29 +1,12 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-
-        {{ form_start(searchProgramForm) }}
-
-                   {{ form_row(searchProgramForm.program) }}
-
-        {{ form_end(searchProgramForm) }}
-
-
-
-
-
-
-
-{% for program in programs %}
-    {{ dump(program) }}
-
-    {% for show in program.shows %}
-        {{ dump(show) }}
-    {% endfor %}
-
-
-
-{% endfor %}
-
-
+    <div class="container">
+        <div class="flex-column text-center">
+            {{ form_start(searchProgramForm) }}
+            <div class="mt-4"> {{ form_label(searchProgramForm.program)}}</div>
+            <div class="mt-4">{{ form_widget(searchProgramForm.program) }} </div>
+            <div class="btn mt-4">{{ form_end(searchProgramForm) }}</div>
+        </div>
+    </div>
+{% include 'inc/_card_search.html.twig' %}
 {% endblock %}
