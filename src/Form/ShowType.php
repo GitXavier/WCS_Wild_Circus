@@ -23,7 +23,12 @@ class ShowType extends AbstractType
             ->add('image', ChoiceType::class, [
                 'label' => 'Image',
                 'choices'  => [
-                    'Clown' => 'clone.jpg',
+                    'Clown' => 'clowns.jpg',
+                    'Moto' => 'moto.jpg',
+                    'Fort' => 'fort.jpg',
+                    'Animaux' => 'animaux.jpg',
+                    'Tigre' => 'tigre.jpg',
+                    'Acrobate' => 'acrobate.jpg',
                     'Illusionniste' => 'illusionniste.jpg',
                     'Magicien' => 'magicien.jpg'
                 ]])

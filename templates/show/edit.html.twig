@@ -1,13 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Edit Show{% endblock %}
 
-{% block body %}
-    <h1>Edit Show</h1>
+{% block body %}{{ parent() }}
+
+    <div class="jumbotron">
+        <h1 class="m-5 text-center">Modifier le spectacle</h1>
+        <a href="{{ path('show_index') }}">back to list</a><br>
+        <a href="{{ path('show_show', {'id': show.id}) }}">show</a>
+
+    </div>
 
     {{ include('show/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('show_index') }}">back to list</a>
 
-    {{ include('show/_delete_form.html.twig') }}
+
+
 {% endblock %}

@@ -1,4 +1,20 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+<div class="container">
+
+    <div class="tab-pane fade show " aria-labelledby="nav-home-tab">
+        <div class=" w-100 row text-center">
+            <div class="col-lg-8 m-auto">  {{ form_label(form.name) }} </div>
+            <div class="col-lg-8 m-auto">  {{ form(form.name) }} </div>
+            <div class="col-lg-8 m-auto">  {{ form_label(form.content) }} </div>
+            <div class="col-lg-8 m-auto"> {{ form(form.content) }} </div>
+            <div class="col-lg-8 m-auto">  {{ form_label(form.image) }} </div>
+            <div class="col-lg-8 m-auto"> {{ form(form.image) }}</div>
+
+        </div>
+
+        <div class="row mt-4">
+            <button class="btn btn-primary  col-lg-3 m-auto">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    </div>
+
+</div>

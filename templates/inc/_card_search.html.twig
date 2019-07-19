@@ -1,18 +1,25 @@
 {% for program in programs %}
+<div class="bg-light" id="portfolio">
     <div class="container">
-        <div class="border  mt-5 p-5 text-center">
-
+        <div class="p-5 text-center">
             <h3 class="pb-3">{{ program.city }} {{ program.name }} le {{ program.date|date('d m Y')}} à {{ program.schedule }} </h3>
-
-            <div class="row justify-content-around">
-                {% for show in program.shows %}
-                <div class="card m-2 p-3" style="width: 18rem;">
-                    <img src="{{ asset('assets/img/' ~ show.image) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{ show.name }}</h5>
-                        <p class="card-text">{{ show.content }}</p>
+        <div class="row">
+            {% for show in program.shows %}
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal{{ show.id }}">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
                     </div>
+                    <img class="img-fluid" src="{{ asset('assets/img/portfolio/'~ show.image) }}" alt="">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>{{ show.name }}</h4>
                 </div>
-                {% endfor %}
-            </div></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endfor %}

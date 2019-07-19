@@ -1,14 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Show index{% endblock %}
 
-{% block body %}
-    <h1>Show index</h1>
+{% block body %}{{ parent() }}
+
+    <div class="jumbotron">
+        <h1 class="m-5 text-center">Liste des spectacles</h1>
+        <a href="{{ path('show_new') }}">Create new</a>
+    </div>
+
+    <div class="container">
+
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+
                 <th>Name</th>
                 <th>Content</th>
                 <th>actions</th>
@@ -17,7 +24,6 @@
         <tbody>
         {% for show in shows %}
             <tr>
-                <td>{{ show.id }}</td>
                 <td>{{ show.name }}</td>
                 <td>{{ show.content }}</td>
                 <td>
@@ -33,5 +39,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('show_new') }}">Create new</a>
+
+</div>
 {% endblock %}

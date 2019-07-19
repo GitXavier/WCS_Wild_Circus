@@ -1,14 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Program index{% endblock %}
 
-{% block body %}
-    <h1>Program index</h1>
+{% block body %}{{ parent() }}
 
+    <div class="jumbotron">
+        <h1 class="m-5 text-center">Liste des programmes</h1>
+        <a href="{{ path('program_new') }}">Create new</a>
+    </div>
+
+    <div class="container">
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>City</th>
                 <th>Date</th>
@@ -19,7 +23,7 @@
         <tbody>
         {% for program in programs %}
             <tr>
-                <td>{{ program.id }}</td>
+
                 <td>{{ program.name }}</td>
                 <td>{{ program.city }}</td>
                 <td>{{ program.date ? program.date|date('Y-m-d') : '' }}</td>
@@ -36,6 +40,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('program_new') }}">Create new</a>
+    </div>
 {% endblock %}

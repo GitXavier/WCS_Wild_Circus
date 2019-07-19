@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
-{% block title %}New Program{% endblock %}
+{% block title %}New Show{% endblock %}
 
-{% block body %}
-    <h1>Create new Program</h1>
+{% block body %}{{ parent() }}
+
+    <div class="jumbotron">
+        <h1 class="m-5 text-center">Créer un nouveau programme</h1>
+        <a href="{{ path('program_index') }}">back to list</a>
+    </div>
 
     {{ include('program/_form.html.twig') }}
 
-    <a href="{{ path('program_index') }}">back to list</a>
+
 {% endblock %}

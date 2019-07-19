@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
+    {% include 'inc/_navbar.html.twig' %}
+
+    {% include 'inc/_header.html.twig' %}
+
     <div class="container">
         <div class="flex-column text-center">
             {{ form_start(searchProgramForm) }}
@@ -9,4 +14,5 @@
         </div>
     </div>
 {% include 'inc/_card_search.html.twig' %}
+{% include 'inc/_footer.html.twig' %}
 {% endblock %}

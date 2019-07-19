@@ -19,9 +19,8 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->render('newdefault.html.twig');
+        return $this->render('default.html.twig');
     }
-
 
     /**
      * @Route("/rechercher", name="search")
@@ -56,19 +55,6 @@ class DefaultController extends AbstractController
     public function ticket(ArticleRepository $articleRepository, Request $request)
     {
 
-        //dd($_GET);
-
-        if (isset($_GET['nbr'])){
-
-            $_GET['nbr'] += 1;
-            $counter = $_GET['nbr'];
-
-            return $this->render('ticket.html.twig', [
-
-                'articles' => $articleRepository->findAll(),
-                'counter' => $counter
-            ]);
-        }
 
         return $this->render('ticket.html.twig', [
 

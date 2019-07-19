@@ -1,50 +1,60 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="text-logo navbar-brand" href="{{ path('circus_index') }}">Wild Circus</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('ticket') }}">Billetterie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('search') }}">Représentation</a>
-            </li>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse flex-column " id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase  m-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{ path('circus_index') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Performances</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path('ticket') }}">Billetterie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path('search') }}">Représentation</a>
+                </li>
+            </ul>
+            <div class="row">
+                <div>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="nav-item">
+                            <a class="nav-link" href="{{ path('count') }}">Mon Compte</a>
+                        </div>
+                    {%endif%}
+                </div>
+                <div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="nav-item">
+                            <a class="nav-link" href="{{ path('admin_index') }}" target="_blank">Administration</a>
+                        </div>
+                    {%endif%}
 
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('show_index') }}">Spectacles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('program_index') }}">Programmes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('article_index') }}">Articles</a>
-                </li>
-            {%endif%}
-        </ul>
-        <div class="row">
-            <div>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="nav-item">
-                        <a class="nav-link" href="{{ path('count') }}">Mon Compte</a>
+                </div>
+                {% if app.user %}
+                    <div class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_logout') }}"> Déconnexion</a>
                     </div>
-                {%endif%}
+                {% else %}
+                    <div class="nav-item active">
+                        <a class="nav-link" href="{{ path('app_login') }}"> Connexion</a>
+                    </div>
+                {% endif %}
             </div>
-            {% if app.user %}
-                <div class="nav-item active">
-                    <a class="nav-link" href="{{ path('app_logout') }}"> Déconnexion</a>
-                </div>
-            {% else %}
-                <div class="nav-item active">
-                    <a class="nav-link" href="{{ path('app_login') }}"> Connexion</a>
-                </div>
-            {% endif %}
         </div>
     </div>
 </nav>

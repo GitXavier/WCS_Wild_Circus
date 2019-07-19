@@ -1,8 +1,16 @@
 {% extends 'default.html.twig' %}
 {% block body %}
 
+    {% include 'inc/_navbar.html.twig' %}
 
+    {% include 'inc/_header.html.twig' %}
 
+    <div class="row mt-5">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase pb-5">Billetterie</h2>
+        </div>
+    </div>
 
     {% include 'inc/_card_ticket.html.twig' %}
+    {% include 'inc/_footer.html.twig' %}
 {% endblock %}
